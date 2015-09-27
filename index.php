@@ -26,9 +26,8 @@ $heightLayer->setMaxOffset(rand(100, 500));
 $heightLayer->generate();
 $map->attachLayer($heightLayer);
 
-$waterLayer = new WaterlineLayer($map);
-$waterLayer->setHeightLayerKey(DiamondAndSquare::KEY);
-$waterLayer->setWaterRatio(1 / rand(4, 10));
+$waterLayer = new WaterlineLayer($map, $heightLayer);
+$waterLayer->setWaterRatio(1 / rand(2, 5));
 $waterLayer->generate();
 $map->attachLayer($waterLayer);
 

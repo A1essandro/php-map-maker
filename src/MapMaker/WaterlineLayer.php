@@ -5,7 +5,6 @@ namespace MapMaker;
 use Exception;
 use MapMaker\Base\Abstraction\IMap;
 use MapMaker\Base\Abstraction\Layer;
-use MapMaker\Exceptions\DependencyException;
 use MapMaker\Exceptions\DependencyTypeException;
 use InvalidArgumentException;
 
@@ -24,26 +23,28 @@ class WaterlineLayer extends Layer
     protected $waterlineHeight = 0;
     protected $waterRatio = 0;
 
+    /**
+     * @var Layer Height layer
+     */
+    protected $heightLayer;
+
     const KEY = __CLASS__;
 
-    function __construct(IMap $map, $waterRatio = 0)
+    function __construct(IMap $map, Layer $heightLayer, $waterRatio = 0)
     {
         parent::__construct($map);
+        $this->heightLayer = $heightLayer;
         $this->setWaterRatio($waterRatio);
     }
 
     private function analysis()
     {
-        if (!$this->heightLayerKey) {
-            throw new DependencyException('heightLayerKey');
-        }
-
         $heightSum = 0;
 
         foreach ($this->map->getGrid() as $coordinates) {
             list($x, $y) = $coordinates;
 
-            $heightCell = $this->map->getLayerCell($x, $y, $this->heightLayerKey);
+            $heightCell = $this->heightLayer->getCell($x, $y);
             if (!$heightCell instanceof HeightCell) {
                 throw new DependencyTypeException('heightLayerKey');
             }
@@ -79,7 +80,8 @@ class WaterlineLayer extends Layer
         $currentMaxHeight = $this->maxHeight - $this->waterlineHeight;
         foreach ($this->map->getGrid() as $coordinates) {
             list($x, $y) = $coordinates;
-            $heightCell = $this->map->getLayerCell($x, $y, $this->heightLayerKey);
+
+            $heightCell = $this->heightLayer->getCell($x, $y);
 
             if (!$heightCell instanceof HeightCell) {
                 throw new Exception('$heightCell must be instance of HeightCell');

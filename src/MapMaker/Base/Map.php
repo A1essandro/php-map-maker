@@ -2,8 +2,6 @@
 
 namespace MapMaker\Base;
 
-use Exception;
-use MapMaker\Base\Abstraction\ICell;
 use MapMaker\Base\Abstraction\IGrid;
 use MapMaker\Base\Abstraction\IMap;
 use MapMaker\Base\Abstraction\IMapVisualiser;
@@ -83,42 +81,6 @@ class Map implements IMap
     public function addLayerVisualiser(LayerVisualiser $visualiser)
     {
         $this->layerVisualisers[] = $visualiser;
-    }
-
-    /**
-     * @param int $x
-     * @param int $y
-     *
-     * @return ICell[]
-     */
-    public function getLayersCells($x, $y)
-    {
-        //начиная с PHP v5.5 появились генераторы и ключевое слово yield
-        //это классно, но нужно поддерживать PHP v5.3
-        $layers = array();
-        foreach ($this->layers as $layer) {
-            if ($layer->getCell($x, $y)) {
-                $layers[] = $layer->getCell($x, $y);
-            }
-        }
-
-        return $layers;
-    }
-
-    public function getLayerCell($x, $y, $layerName)
-    {
-        $layers = $this->getLayersCells($x, $y);
-
-        return $layers[$this->getLayerOrderKey($layerName)];
-    }
-
-    public function getLayerOrderKey($layerName)
-    {
-        if (isset($this->layersKeys[$layerName])) {
-            return $this->layersKeys[$layerName];
-        } else {
-            throw new Exception(sprintf('Не найден ключ %s списке слоев карты', $layerName));
-        }
     }
 
     #region Getters

@@ -13,7 +13,7 @@ class DependencyException extends \Exception
 
     public function __construct($dependency)
     {
-        $str = sprintf('Не задан ключ к зависимости %s', $dependency);
+        $str = sprintf('You must set the %s', $dependency);
         parent::__construct($str);
     }
 
