@@ -1,0 +1,18 @@
+{
+    "name": "a1essandro/mapmaker",
+    "description": "Area map grid generator and visualiser",
+    "authors": [
+        {
+            "name": "A1essandro",
+            "email": "alexander.yermakov.1990@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-0" : {
+            "MapMaker\\" : "src/"
+        }
+    },
+    "require": {
+        "php": ">=5.3.0"
+    }
+}
