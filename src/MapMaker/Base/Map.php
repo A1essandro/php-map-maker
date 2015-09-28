@@ -2,6 +2,8 @@
 
 namespace MapMaker\Base;
 
+use InvalidArgumentException;
+use LogicException;
 use MapMaker\Base\Abstraction\IGrid;
 use MapMaker\Base\Abstraction\IMap;
 use MapMaker\Base\Abstraction\IMapVisualiser;
@@ -67,12 +69,39 @@ class Map implements IMap
         return $this->visualiser->render($this);
     }
 
-    public function attachLayer(Layer $layer, $layerName = null)
+    public function attachLayer(Layer $layer, $orderKey = null, $existsKeyEvent = self::EXISTS_KEY_EVENT_EXCEPTION)
     {
-        $orderKey = count($this->layers);
+        if ($orderKey === null) {
+            $orderKey = count($this->layers);
+        } elseif (!is_int($orderKey)) {
+            throw new InvalidArgumentException('Second argument must be int');
+        }
+
+        if (!empty($this->layers[$orderKey])) {
+            switch ($existsKeyEvent) {
+                case self::EXISTS_KEY_EVENT_EXCEPTION:
+                    throw new LogicException('Overwrite error');
+                    break;
+
+                case self::EXISTS_KEY_EVENT_OVERWRITE:
+                    $this->layers[$orderKey] = $layer;
+                    break;
+
+                case self::EXISTS_KEY_EVENT_DISPLACE:
+                    for ($i = count($this->layers); $i > $orderKey; $i--) {
+                        $this->layers[$i] = $this->layers[$i - 1];
+                    }
+                    $this->layers[$orderKey] = $layer;
+                    break;
+
+                default:
+                    throw new InvalidArgumentException(
+                        printf('Undefined overwriting event %s', $existsKeyEvent)
+                    );
+            }
+        }
+
         $this->layers[$orderKey] = $layer;
-        $nameKey = $layerName ? $layerName : $layer::KEY;
-        $this->layersKeys[$nameKey] = $orderKey;
     }
 
     /**

@@ -9,6 +9,10 @@ namespace MapMaker\Base\Abstraction;
 interface IMap
 {
 
+    const EXISTS_KEY_EVENT_EXCEPTION = 0;
+    const EXISTS_KEY_EVENT_OVERWRITE = 1;
+    const EXISTS_KEY_EVENT_DISPLACE = 2;
+
     /**
      * Установка визуализатора карты
      *
@@ -24,11 +28,13 @@ interface IMap
     public function render();
 
     /**
-     * Прикрепление слоя к карте
+     * Attaching layer to this map
      *
      * @param Layer $layer
+     * @param int $orderKey
+     * @param int $existsKeyEvent event if orderKey is exists
      */
-    public function attachLayer(Layer $layer);
+    public function attachLayer(Layer $layer, $orderKey = null, $existsKeyEvent = self::EXISTS_KEY_EVENT_EXCEPTION);
 
     /**
      * @param LayerVisualiser $visualiser
