@@ -66,4 +66,19 @@ abstract class Layer
         $this->cells[$x][$y] = $cell;
     }
 
+    /**
+     * Set your handler for each cell!
+     *
+     * @param callable $handler Callable handler
+     * @param array    $additionalParams Additional params array to your handler
+     */
+    public function cellsHandler(callable $handler, array $additionalParams = array())
+    {
+        foreach ($this->map->getGrid() as $coordinates) {
+            list($x, $y) = $coordinates;
+            $cell = $this->getCell($x, $y);
+            $handler($cell, $additionalParams);
+        }
+    }
+
 }
