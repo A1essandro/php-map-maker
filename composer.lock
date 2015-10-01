@@ -1,0 +1,59 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "b387da0682c13f6dcc439f50fcb09902",
+    "content-hash": "e72cba14cf178fde6800905f3e790881",
+    "packages": [
+        {
+            "name": "a1essandro/diamond-and-square",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/A1essandro/Diamond-And-Square.git",
+                "reference": "c84ebee0ea9f8acfa7302de53cdf9cfa4092d68e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/A1essandro/Diamond-And-Square/zipball/c84ebee0ea9f8acfa7302de53cdf9cfa4092d68e",
+                "reference": "c84ebee0ea9f8acfa7302de53cdf9cfa4092d68e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MapGenerator\\": "src/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "A1essandro",
+                    "email": "alexander.yermakov.1990@gmail.com"
+                }
+            ],
+            "description": "Algorithm for generating heightmaps",
+            "support": {
+                "source": "https://github.com/A1essandro/Diamond-And-Square/tree/master",
+                "issues": "https://github.com/A1essandro/Diamond-And-Square/issues"
+            },
+            "time": "2015-09-30 03:39:28"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "a1essandro/diamond-and-square": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "php": ">=5.3.0"
+    },
+    "platform-dev": []
+}
