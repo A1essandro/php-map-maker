@@ -24,13 +24,13 @@ function __autoload($class)
 $map = new Map(new Grid(75, 75));
 $map->setVisualiser(new HtmlVisualiser());
 
-$ds = new DiamondAndSquare(7, 100);
-$ds->generate();
-$heightMap = $ds->getMap();
+// See https://github.com/A1essandro/Diamond-And-Square
+$heightMap = DiamondAndSquare::generateAndGetMap(7, 100);
 
 $heightLayer = new HeightLayer($map, $heightMap);
 $heightLayer->cut(2, 2);
 $heightLayer->generate();
+$map->attachLayer($heightLayer);
 
 $waterLayer = new WaterlineLayer($map, $heightLayer);
 $waterLayer->setWaterRatio(1 / rand(2, 5));

@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/A1essandro/Diamond-And-Square.git",
-                "reference": "c84ebee0ea9f8acfa7302de53cdf9cfa4092d68e"
+                "reference": "124602b7eb76ef31e284ecf045dadea58b7072e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/A1essandro/Diamond-And-Square/zipball/c84ebee0ea9f8acfa7302de53cdf9cfa4092d68e",
-                "reference": "c84ebee0ea9f8acfa7302de53cdf9cfa4092d68e",
+                "url": "https://api.github.com/repos/A1essandro/Diamond-And-Square/zipball/124602b7eb76ef31e284ecf045dadea58b7072e5",
+                "reference": "124602b7eb76ef31e284ecf045dadea58b7072e5",
                 "shasum": ""
             },
             "require": {
@@ -41,7 +41,7 @@
                 "source": "https://github.com/A1essandro/Diamond-And-Square/tree/master",
                 "issues": "https://github.com/A1essandro/Diamond-And-Square/issues"
             },
-            "time": "2015-09-30 03:39:28"
+            "time": "2015-10-01 20:16:26"
         }
     ],
     "packages-dev": [],
