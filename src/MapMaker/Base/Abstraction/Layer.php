@@ -1,6 +1,7 @@
 <?php
 
 namespace MapMaker\Base\Abstraction;
+use SplFixedArray;
 
 /**
  * Общие методы, свойства и интерфейс для слоев
@@ -22,7 +23,7 @@ abstract class Layer
      *
      * @var ICell[][]
      */
-    private $cells = array(array());
+    private $cells;
 
     /**
      * Ключ по умолчанию
@@ -56,7 +57,7 @@ abstract class Layer
         return null;
     }
 
-    protected function setCells(array $cells)
+    protected function setCells(SplFixedArray $cells)
     {
         $this->cells = $cells;
     }

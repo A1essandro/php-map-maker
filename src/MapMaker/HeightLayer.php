@@ -2,9 +2,11 @@
 
 namespace MapMaker;
 
+use ArrayAccess;
 use Exception;
 use MapMaker\Base\Abstraction\IMap;
 use MapMaker\Base\Abstraction\Layer;
+use SplFixedArray;
 
 class HeightLayer extends Layer
 {
@@ -15,7 +17,7 @@ class HeightLayer extends Layer
      * @param IMap  $map
      * @param float[][] $heightsArray 2d array
      */
-    public function __construct(IMap $map, array $heightsArray)
+    public function __construct(IMap $map, ArrayAccess $heightsArray)
     {
         parent::__construct($map);
         if($this->checkInputArraySizes($heightsArray))
@@ -52,13 +54,19 @@ class HeightLayer extends Layer
         $unpreparedX = count($this->unpreparedPoints);
         $unpreparedY = count($this->unpreparedPoints[0]);
 
+        $newUnpreparedPoints = new SplFixedArray($this->map->getGrid()->getSizeX());
+
         if($unpreparedX - $startX < $this->map->getGrid()->getSizeX() ||
             $unpreparedY - $startY < $this->map->getGrid()->getSizeY())
             throw new Exception("Small map");
 
-        $newUnpreparedPoints = array(array());
+
         foreach ($this->map->getGrid() as $coordinates) {
             list($ix, $iy) = $coordinates;
+
+            if(empty($newUnpreparedPoints[$ix]))
+                $newUnpreparedPoints[$ix] = new SplFixedArray($this->map->getGrid()->getSizeY());
+
             $newUnpreparedPoints[$ix][$iy] = $this->unpreparedPoints[$startX + $ix][$startY + $iy];
         }
 

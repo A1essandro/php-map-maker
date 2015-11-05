@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b387da0682c13f6dcc439f50fcb09902",
-    "content-hash": "e72cba14cf178fde6800905f3e790881",
+    "hash": "d3377b6fff1dd2d6eab2f857011c3654",
+    "content-hash": "583bd5796cf4f04b3b6661974d8c3e8d",
     "packages": [
         {
             "name": "a1essandro/diamond-and-square",
@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/A1essandro/Diamond-And-Square.git",
-                "reference": "124602b7eb76ef31e284ecf045dadea58b7072e5"
+                "reference": "5661f60b43182e48ea846d2df63aa81c8b3e2299"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/A1essandro/Diamond-And-Square/zipball/124602b7eb76ef31e284ecf045dadea58b7072e5",
-                "reference": "124602b7eb76ef31e284ecf045dadea58b7072e5",
+                "url": "https://api.github.com/repos/A1essandro/Diamond-And-Square/zipball/5661f60b43182e48ea846d2df63aa81c8b3e2299",
+                "reference": "5661f60b43182e48ea846d2df63aa81c8b3e2299",
                 "shasum": ""
             },
             "require": {
@@ -30,6 +30,10 @@
                     "MapGenerator\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
             "authors": [
                 {
                     "name": "A1essandro",
@@ -37,11 +41,7 @@
                 }
             ],
             "description": "Algorithm for generating heightmaps",
-            "support": {
-                "source": "https://github.com/A1essandro/Diamond-And-Square/tree/master",
-                "issues": "https://github.com/A1essandro/Diamond-And-Square/issues"
-            },
-            "time": "2015-10-01 20:16:26"
+            "time": "2015-11-05 19:50:19"
         }
     ],
     "packages-dev": [],
