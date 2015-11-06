@@ -21,7 +21,7 @@ abstract class Layer
     /**
      * Массив точек слоя
      *
-     * @var ICell[][]
+     * @var SplFixedArray
      */
     private $cells;
 

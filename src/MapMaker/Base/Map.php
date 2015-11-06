@@ -110,6 +110,7 @@ class Map implements IMap
     public function addLayerVisualiser(LayerVisualiser $visualiser)
     {
         $this->layerVisualisers[] = $visualiser;
+        $visualiser->setMap($this);
     }
 
     #region Getters
@@ -128,6 +129,14 @@ class Map implements IMap
     public function getGrid()
     {
         return $this->grid;
+    }
+
+    /**
+     * @return IMapVisualiser
+     */
+    public function getVisualiser()
+    {
+        return $this->visualiser;
     }
 
     #endregion

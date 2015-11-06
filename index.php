@@ -1,11 +1,14 @@
 <?php
 
+ini_set('max_execution_time', 200);
+ini_set('memory_limit', '256M');
+
 use MapGenerator\DiamondAndSquare;
 use MapMaker\Base\Grid;
 use MapMaker\Base\Map;
+use MapMaker\GDVisualiser;
 use MapMaker\HeightLayer;
-use MapMaker\HtmlVisualiser;
-use MapMaker\WaterlineHtmlVisualiser;
+use MapMaker\WaterlineGDVisualiser;
 use MapMaker\WaterlineLayer;
 
 ini_set('display_errors', 1);
@@ -21,8 +24,8 @@ function __autoload($class)
     require __DIR__ . $ds . 'src' . $ds . $classPath . '.php';
 }
 
-$map = new Map(new Grid(75, 75));
-$map->setVisualiser(new HtmlVisualiser());
+$map = new Map(new Grid(100, 100));
+$map->setVisualiser(new GDVisualiser(GDVisualiser::TYPE_PNG));
 
 // See https://github.com/A1essandro/Diamond-And-Square
 $heightMap = DiamondAndSquare::generateAndGetMap(7, 100);
@@ -37,7 +40,7 @@ $waterLayer->setWaterRatio(1 / rand(2, 5));
 $waterLayer->generate();
 $map->attachLayer($waterLayer);
 
-$waterlineVisualiser = new WaterlineHtmlVisualiser();
+$waterlineVisualiser = new WaterlineGDVisualiser();
 $waterlineVisualiser->setLayer($waterLayer);
 $map->addLayerVisualiser($waterlineVisualiser);
 

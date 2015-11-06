@@ -48,4 +48,13 @@ interface IMap
      */
     public function getGrid();
 
+    /**
+     * @return LayerVisualiser[]
+     */
+    function getLayerVisualisers();
+
+    /**
+     * @return IMapVisualiser
+     */
+    function getVisualiser();
 }

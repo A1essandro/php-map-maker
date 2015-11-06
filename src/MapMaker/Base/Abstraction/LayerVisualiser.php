@@ -27,6 +27,8 @@ abstract class LayerVisualiser
     public function renderCell($x, $y)
     {
         $cell = $this->layer->getCell($x, $y);
+        if(empty($cell))
+            exit($x.' '.$y);
         return $this->render($cell);
     }
 
@@ -46,6 +48,14 @@ abstract class LayerVisualiser
     public function getLayer()
     {
         $this->layer;
+    }
+
+    /**
+     * @param IMap $map
+     */
+    public function setMap($map)
+    {
+        $this->map = $map;
     }
 
 }
