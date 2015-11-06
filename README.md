@@ -3,43 +3,40 @@
 ##Usage example:
 ```php
 
-//autoload third-party packages
-require __DIR__ . '/vendor/autoload.php';
-
 use MapGenerator\DiamondAndSquare;
 use MapMaker\Base\Grid;
 use MapMaker\Base\Map;
+use MapMaker\GDVisualiser;
 use MapMaker\HeightLayer;
-use MapMaker\HtmlVisualiser;
-use MapMaker\WaterlineHtmlVisualiser;
+use MapMaker\WaterlineGDVisualiser;
 use MapMaker\WaterlineLayer;
 
-//create Map 75x75 and set to visualiser
-$map = new Map(new Grid(75, 75));
-$map->setVisualiser(new HtmlVisualiser());
+require __DIR__ . '/vendor/autoload.php';
 
-//create "crude" heightmap (you can use another method)
+//init map
+$map = new Map(new Grid(100, 100));
+$map->setVisualiser(new GDVisualiser(GDVisualiser::TYPE_PNG));
+
 // See https://github.com/A1essandro/Diamond-And-Square
 $heightMap = DiamondAndSquare::generateAndGetMap(7, 100);
 
-//generate height layer based heightmap
+//HeightLayer
 $heightLayer = new HeightLayer($map, $heightMap);
 $heightLayer->cut(2, 2);
 $heightLayer->generate();
 $map->attachLayer($heightLayer);
 
-//generate waterline layer based heightLayer
+//Waterline layer
 $waterLayer = new WaterlineLayer($map, $heightLayer);
 $waterLayer->setWaterRatio(1 / rand(2, 5));
 $waterLayer->generate();
 $map->attachLayer($waterLayer);
 
-//create visualiser for waterline layer
-$waterlineVisualiser = new WaterlineHtmlVisualiser();
+//add visualiser for WaterlineLayer
+$waterlineVisualiser = new WaterlineGDVisualiser();
 $waterlineVisualiser->setLayer($waterLayer);
 $map->addLayerVisualiser($waterlineVisualiser);
 
-//rendering all visualisers
 echo $map->render();
 
 ```
