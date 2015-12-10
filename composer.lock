@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d3377b6fff1dd2d6eab2f857011c3654",
-    "content-hash": "583bd5796cf4f04b3b6661974d8c3e8d",
+    "hash": "ccd11fade0e4c953f22fff84175b8074",
+    "content-hash": "36b437566d33ce1a65d70dde1e089513",
     "packages": [
         {
             "name": "a1essandro/diamond-and-square",
@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/A1essandro/Diamond-And-Square.git",
-                "reference": "5661f60b43182e48ea846d2df63aa81c8b3e2299"
+                "reference": "db030b3addd5af55c5ba05a771fd39f78a2deb15"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/A1essandro/Diamond-And-Square/zipball/5661f60b43182e48ea846d2df63aa81c8b3e2299",
-                "reference": "5661f60b43182e48ea846d2df63aa81c8b3e2299",
+                "url": "https://api.github.com/repos/A1essandro/Diamond-And-Square/zipball/db030b3addd5af55c5ba05a771fd39f78a2deb15",
+                "reference": "db030b3addd5af55c5ba05a771fd39f78a2deb15",
                 "shasum": ""
             },
             "require": {
@@ -41,14 +41,51 @@
                 }
             ],
             "description": "Algorithm for generating heightmaps",
-            "time": "2015-11-05 19:50:19"
+            "time": "2015-11-11 06:27:06"
+        },
+        {
+            "name": "a1essandro/perlin-noise",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/A1essandro/perlin-noise-generator.git",
+                "reference": "29f44a9df66d5f5ba28407853313f40aea2a0d42"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/A1essandro/perlin-noise-generator/zipball/29f44a9df66d5f5ba28407853313f40aea2a0d42",
+                "reference": "29f44a9df66d5f5ba28407853313f40aea2a0d42",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MapGenerator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "A1essandro",
+                    "email": "alexander.yermakov.1990@gmail.com"
+                }
+            ],
+            "description": "Algorithm for generating heightmaps",
+            "time": "2015-12-10 05:24:10"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "a1essandro/diamond-and-square": 20
+        "a1essandro/diamond-and-square": 20,
+        "a1essandro/perlin-noise": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

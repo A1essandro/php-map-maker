@@ -1,9 +1,5 @@
 <?php
 
-ini_set('max_execution_time', 200);
-ini_set('memory_limit', '256M');
-
-use MapGenerator\DiamondAndSquare;
 use MapMaker\Base\Grid;
 use MapMaker\Base\Map;
 use MapMaker\GDVisualiser;
@@ -28,15 +24,17 @@ $map = new Map(new Grid(100, 100));
 $map->setVisualiser(new GDVisualiser(GDVisualiser::TYPE_PNG));
 
 // See https://github.com/A1essandro/Diamond-And-Square
-$heightMap = DiamondAndSquare::generateAndGetMap(7, 100);
+$generator = new MapGenerator\PerlinNoiseGenerator();
+$generator->setSize(100);
+$generator->setPersistence(mt_rand(500, 800) / 1000);
+$heightMap = $generator->generate();
 
 $heightLayer = new HeightLayer($map, $heightMap);
-$heightLayer->cut(2, 2);
 $heightLayer->generate();
 $map->attachLayer($heightLayer);
 
 $waterLayer = new WaterlineLayer($map, $heightLayer);
-$waterLayer->setWaterRatio(1 / rand(2, 5));
+$waterLayer->setWaterRatio(mt_rand(300, 700) / 1000);
 $waterLayer->generate();
 $map->attachLayer($waterLayer);
 
